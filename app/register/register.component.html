@@ -1,0 +1,86 @@
+<div class="container-fluid">
+        <h2>Registration Form</h2>
+
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>UserName</label>
+        <input [class.is-invalid]="registrationForm.get('userName').invalid &&
+        registrationForm.get('userName').touched" style="width:360px" formControlName="userName" type="text" class="form-control">
+      
+      <div *ngIf="registrationForm.get('userName').invalid && registrationForm.get('userName').touched">
+      <small *ngIf="registrationForm.get('userName').errors?.required"  class="text-danger">User Name Is Required</small>
+      <small  *ngIf="registrationForm.get('userName').errors?.minlength" class="text-danger">User Name Must be Atleast 3 char</small>
+      <small  *ngIf="registrationForm.get('userName').errors?.pattern" class="text-danger">User Name Must be Alpha</small>
+      </div>
+      </div>
+      
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" style="width:360px"
+         formControlName="password" class="form-control">
+      </div>
+      
+      
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input type="password" style="width:360px" formControlName="confirmPassword" class="form-control">
+      </div>
+      <div class="error" *ngIf="registrationForm.get('confirmPassword').errors &&
+      registrationForm.get('confirmPassword').errors.ConfirmPassword">
+      Password and confirmPassword Does not Match
+      </div>
+      
+      <div class="form-group">
+        <label>Ph No</label>
+        <input type="tel" [class.is-invalid]="registrationForm.get('phoneNumber').invalid
+        && registrationForm.get('phoneNumber').touched" style="width:360px" formControlName="phoneNumber" class="form-control" maxlength="10" minlength="10">
+      
+        <div *ngIf="registrationForm.get('phoneNumber').invalid && registrationForm.get('phoneNumber').touched">
+          <small *ngIf="registrationForm.get('phoneNumber').errors?.required"  class="text-danger">Phone Number Required</small>
+          <small *ngIf="registrationForm.get('phoneNumber').errors?.minlength"  class="text-danger">please enter valid Number</small>
+        </div>
+      </div>
+      
+      <div formGroupName="address">
+          <div class="form-group">
+              <label>City</label>
+              <select type="text" style="width:360px" formControlName="city" class="form-control">
+              <option>--Select--</option>
+              <option>Gulbarga</option>
+              <option>Dharwad</option>
+              <option>Raichur</option>
+              <option>Bijapur</option>
+            </select>
+            </div>
+      
+            <div class="form-group">
+              <label>State</label>
+              <select style="width:360px" formControlName="state" type="text"  class="form-control">
+              <option>--Select--</option>
+              <option>Karnataka</option>
+              <option>Gujurat</option>
+              <option>Andra</option>
+              <option>Telngana</option>
+            </select>
+            </div>
+      
+            <div class="form-group">
+              <label>Postal Code</label>
+              <select type="text" style="width:360px"  formControlName="postalCode" class="form-control">
+              <option>--Select--</option>
+              <option>585211</option>
+              <option>585222</option>
+              <option>585212</option>
+              <option>585654</option>
+            </select>
+            </div>
+      </div>
+      
+      <button [disabled]="!registrationForm.valid" class="btn btn-primary" type="submit" style="color:white">Register</button>&nbsp;&nbsp;
+      <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+
+     <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
+      
+      </form>
+      
+      </div> 

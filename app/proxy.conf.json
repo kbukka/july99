@@ -1,0 +1,7 @@
+{
+    "/api":
+    {
+        "target":"198.168.1.7://localhost:8081",
+        "secure":false
+    }
+}
